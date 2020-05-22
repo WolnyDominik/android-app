@@ -3,41 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_stabilization">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.ismip12.pscf.planemonitor.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
-
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.ismip12.pscf.planemonitor.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
+        android:id="@+id/nav_stabilization"
+        android:name="com.ismip12.pscf.planemonitor.ui.stabilization.StabilizationFragment"
+        android:label="@string/menu_stabilization"
+        tools:layout="@layout/fragment_stabilization" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.ismip12.pscf.planemonitor.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_engines"
+        android:name="com.ismip12.pscf.planemonitor.ui.engines.EnginesFragment"
+        android:label="@string/menu_engines"
+        tools:layout="@layout/fragment_engines" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ismip12.pscf.planemonitor.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_components"
+        android:name="com.ismip12.pscf.planemonitor.ui.components.ComponentsFragment"
+        android:label="@string/menu_components"
+        tools:layout="@layout/fragment_components" />
 </navigation>

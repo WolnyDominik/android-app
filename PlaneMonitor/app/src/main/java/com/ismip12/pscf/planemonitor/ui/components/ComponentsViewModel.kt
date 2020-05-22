@@ -1,13 +1,13 @@
-package com.ismip12.pscf.planemonitor.ui.home
+package com.ismip12.pscf.planemonitor.ui.components
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class ComponentsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is components Fragment"
     }
     val text: LiveData<String> = _text
 }
