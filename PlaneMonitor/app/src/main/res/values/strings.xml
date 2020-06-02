@@ -2,14 +2,16 @@
     <string name="app_name">Plane Monitor</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Monitorowanie samolotu</string>
+    <string name="nav_header_subtitle">Projektowanie Systemów Cybernetyczno-Fizycznych</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_stabilization">Stabilization</string>
     <string name="menu_engines">Engines</string>
     <string name="menu_components">Components</string>
+    <string name="menu_taws">TAWS</string>
+    <string name="menu_comfort">Comfort</string>
 
     <string name="home_second">Home Second</string>
 </resources>

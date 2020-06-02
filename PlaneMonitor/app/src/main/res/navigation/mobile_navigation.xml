@@ -22,4 +22,16 @@
         android:name="com.ismip12.pscf.planemonitor.ui.components.ComponentsFragment"
         android:label="@string/menu_components"
         tools:layout="@layout/fragment_components" />
+
+    <fragment
+        android:id="@+id/nav_taws"
+        android:name="com.ismip12.pscf.planemonitor.ui.taws.TawsFragment"
+        android:label="@string/menu_taws"
+        tools:layout="@layout/fragment_taws" />
+
+    <fragment
+        android:id="@+id/nav_comfort"
+        android:name="com.ismip12.pscf.planemonitor.ui.comfort.ComfortFragment"
+        android:label="@string/menu_comfort"
+        tools:layout="@layout/fragment_comfort" />
 </navigation>

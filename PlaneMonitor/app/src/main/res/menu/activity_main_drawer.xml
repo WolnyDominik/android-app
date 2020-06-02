@@ -13,5 +13,11 @@
         <item
             android:id="@+id/nav_components"
             android:title="@string/menu_components" />
+        <item
+            android:id="@+id/nav_taws"
+            android:title="@string/menu_taws" />
+        <item
+            android:id="@+id/nav_comfort"
+            android:title="@string/menu_comfort" />
     </group>
 </menu>

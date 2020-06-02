@@ -1,4 +1,4 @@
-package com.ismip12.pscf.planemonitor.ui.engines
+package com.ismip12.pscf.planemonitor.ui.taws
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ismip12.pscf.planemonitor.R
 
-class EnginesFragment : Fragment() {
+class TawsFragment : Fragment() {
 
-    private lateinit var enginesViewModel: EnginesViewModel
+    private lateinit var tawsViewModel: TawsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        enginesViewModel =
-                ViewModelProvider(this).get(EnginesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_engines, container, false)
-        val textView: TextView = root.findViewById(R.id.text_engines)
-        enginesViewModel.text.observe(viewLifecycleOwner, Observer {
+        tawsViewModel =
+                ViewModelProvider(this).get(TawsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_taws, container, false)
+        val textView: TextView = root.findViewById(R.id.text_taws)
+        tawsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

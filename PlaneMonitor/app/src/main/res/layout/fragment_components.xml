@@ -6,18 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".ui.components.ComponentsFragment">
 
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="H,696:1000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/menu_components" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/b757_comp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/flDoor"
+            android:layout_width="91dp"
+            android:layout_height="20dp"
+            android:text="OTWARTE"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.041" />
+
+        <TextView
+            android:id="@+id/rlDoor"
+            android:layout_width="95dp"
+            android:layout_height="19dp"
+            android:text="OTWARTE"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.842" />
+
+        <TextView
+            android:id="@+id/rrDoor"
+            android:layout_width="96dp"
+            android:layout_height="20dp"
+            android:text="OTWARTE"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.842" />
+
+        <TextView
+            android:id="@+id/gears"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:text="OPUSZCZONE"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.79"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.110000014" />
+
+        <TextView
+            android:id="@+id/rhLabel"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:text="Czerwony:"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.156" />
+
+        <TextView
+            android:id="@+id/bhLabel"
+            android:layout_width="67dp"
+            android:layout_height="20dp"
+            android:text="Niebieski:"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.239" />
+
+        <TextView
+            android:id="@+id/yhLabel"
+            android:layout_width="41dp"
+            android:layout_height="20dp"
+            android:text="Żółty:"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.323" />
+
+        <TextView
+            android:id="@+id/redHydro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000 PSI"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.295"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.156" />
+
+        <TextView
+            android:id="@+id/blueHydro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000 PSI"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.295"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.239" />
+
+        <TextView
+            android:id="@+id/yellowHydro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000 PSI"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.295"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.323" />
+
+        <TextView
+            android:id="@+id/frDoor"
+            android:layout_width="95dp"
+            android:layout_height="19dp"
+            android:text="OTWARTE"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/imageView2"
+            app:layout_constraintEnd_toEndOf="@id/imageView2"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2"
+            app:layout_constraintVertical_bias="0.038" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

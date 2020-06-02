@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.engines.EnginesFragment">
+    tools:context=".ui.taws.TawsFragment">
 
     <TextView
-        android:id="@+id/text_engines"
+        android:id="@+id/text_taws"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

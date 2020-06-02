@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ismip12.pscf.planemonitor.R
+import org.w3c.dom.Text
 
 class ComponentsFragment : Fragment() {
 
@@ -22,9 +23,37 @@ class ComponentsFragment : Fragment() {
         componentsViewModel =
                 ViewModelProvider(this).get(ComponentsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_components, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        componentsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        var flDoor: TextView = root.findViewById(R.id.flDoor)
+        var frDoor: TextView = root.findViewById(R.id.frDoor)
+        var rlDoor: TextView = root.findViewById(R.id.rlDoor)
+        var rrDoor: TextView = root.findViewById(R.id.rrDoor)
+        var gears: TextView = root.findViewById(R.id.gears)
+        var redHydro: TextView = root.findViewById(R.id.redHydro)
+        var blueHydro: TextView = root.findViewById(R.id.blueHydro)
+        var yellowHydro: TextView = root.findViewById(R.id.yellowHydro)
+        componentsViewModel.flDoor.observe(viewLifecycleOwner, Observer {
+            flDoor.text = it
+        })
+        componentsViewModel.frDoor.observe(viewLifecycleOwner, Observer {
+            frDoor.text = it
+        })
+        componentsViewModel.rlDoor.observe(viewLifecycleOwner, Observer {
+            rlDoor.text = it
+        })
+        componentsViewModel.rrDoor.observe(viewLifecycleOwner, Observer {
+            rrDoor.text = it
+        })
+        componentsViewModel.gears.observe(viewLifecycleOwner, Observer {
+            gears.text = it
+        })
+        componentsViewModel.redHydro.observe(viewLifecycleOwner, Observer {
+            redHydro.text = it
+        })
+        componentsViewModel.blueHydro.observe(viewLifecycleOwner, Observer {
+            blueHydro.text = it
+        })
+        componentsViewModel.yellowHydro.observe(viewLifecycleOwner, Observer {
+            yellowHydro.text = it
         })
         return root
     }
