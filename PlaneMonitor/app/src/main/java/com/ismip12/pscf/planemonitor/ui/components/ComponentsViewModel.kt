@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.ismip12.pscf.planemonitor.MainActivity
 import com.ismip12.pscf.planemonitor.controller.ComponentsController
 import com.ismip12.pscf.planemonitor.data_model.front.Components
+import com.ismip12.pscf.planemonitor.data_model.mech_parts.params.Alarm
 
 class ComponentsViewModel : ViewModel() {
 
@@ -29,6 +30,14 @@ class ComponentsViewModel : ViewModel() {
             {error->
                 Log.println(Log.ERROR, "BLAD", error.message!!)
             })
+
+       /* compContr.subscribeNewAlarms().subscribe({alarm->
+
+            _alNe.postValue(alarm.get(0).code.toString())
+        },
+            {error->
+                Log.println(Log.ERROR, "BLAD", error.message!!)
+            })*/
     }
 
     private val _flDoor = MutableLiveData<String>().apply {
@@ -84,6 +93,9 @@ class ComponentsViewModel : ViewModel() {
     private val _yellowHydro = MutableLiveData<String>().apply {
         value = compModel.ECAM_HYD[1].toString() + " PSI"
     }
+  /*  private val _alNe = MutableLiveData<String>().apply {
+        value = "off"
+    }*/
 
     var flDoor: LiveData<String> = _flDoor
     var frDoor: LiveData<String> = _frDoor
@@ -93,7 +105,7 @@ class ComponentsViewModel : ViewModel() {
     var redHydro: LiveData<String> = _redHydro
     var blueHydro: LiveData<String> = _blueHydro
     var yellowHydro: LiveData<String> = _yellowHydro
-
+   /* var alNe: LiveData<String> = _alNe*/
     /*fun update(){
         _flDoor.p
     }*/

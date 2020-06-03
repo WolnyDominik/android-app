@@ -1,11 +1,12 @@
 package com.ismip12.pscf.planemonitor.controller
 
 import android.util.Log
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.gmail.bishoybasily.stomp.lib.Event
 import com.gmail.bishoybasily.stomp.lib.StompClient
-import com.ismip12.pscf.planemonitor.data_model.front.Components
 import com.ismip12.pscf.planemonitor.data_model.mech_parts.MechanicalPartsState
+import com.ismip12.pscf.planemonitor.data_model.mech_parts.params.Alarm
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.disposables.Disposable
@@ -13,8 +14,8 @@ import io.reactivex.subjects.PublishSubject
 import okhttp3.OkHttpClient
 
 class ComponentsController {
-    lateinit var mechanicalPartsState: MechanicalPartsState
     private val statePublisher: PublishSubject<MechanicalPartsState> = PublishSubject.create()
+    private val alarmPublisher: PublishSubject<List<Alarm>> = PublishSubject.create()
     fun getData() {
 
         lateinit var stompConnection: Disposable
@@ -39,11 +40,21 @@ class ComponentsController {
 
                         stomp.join("/sensor-network/mechanical-parts").subscribe {
 
-                            Log.println(Log.DEBUG, "WIADOMOSC", it)
+                            Log.println(Log.DEBUG, "MechanicalPartsState", it)
                             val mapper = ObjectMapper()
-                            val values: MechanicalPartsState =
+                            val mech: MechanicalPartsState =
                                 mapper.readValue(it, MechanicalPartsState::class.java)
-                            statePublisher.onNext(values);
+                            statePublisher.onNext(mech);
+
+                        }
+
+                        stomp.join("/sensor-network/alerts").subscribe {
+
+                            Log.println(Log.DEBUG, "Alarms", it)
+                            val mapper = ObjectMapper()
+                            val alarm: List<Alarm> =
+                                mapper.readValue(it, object : TypeReference<List<Alarm?>?>() {})
+                            alarmPublisher.onNext(alarm);
 
                         }
 
@@ -72,6 +83,9 @@ class ComponentsController {
 
     fun subscribeNewStates():Flowable<MechanicalPartsState>{
         return statePublisher.toFlowable(BackpressureStrategy.LATEST)
+    }
+    fun subscribeNewAlarms():Flowable<List<Alarm>>{
+        return alarmPublisher.toFlowable(BackpressureStrategy.LATEST)
     }
 }
 

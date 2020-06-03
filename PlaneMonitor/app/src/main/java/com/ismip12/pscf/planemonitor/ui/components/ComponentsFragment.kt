@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ismip12.pscf.planemonitor.R
+import kotlinx.android.synthetic.main.fragment_components.*
 import org.w3c.dom.Text
 
 class ComponentsFragment : Fragment() {
@@ -31,6 +33,7 @@ class ComponentsFragment : Fragment() {
         var redHydro: TextView = root.findViewById(R.id.redHydro)
         var blueHydro: TextView = root.findViewById(R.id.blueHydro)
         var yellowHydro: TextView = root.findViewById(R.id.yellowHydro)
+       /* var alNe: FloatingActionButton = root.findViewById(R.id.alNe)*/
         componentsViewModel.flDoor.observe(viewLifecycleOwner, Observer {
             flDoor.text = it
         })
@@ -55,6 +58,9 @@ class ComponentsFragment : Fragment() {
         componentsViewModel.yellowHydro.observe(viewLifecycleOwner, Observer {
             yellowHydro.text = it
         })
+       /* componentsViewModel.alNe.observe(viewLifecycleOwner, Observer {
+            alNe.tooltipText = it
+        })*/
         return root
     }
 }
