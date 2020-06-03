@@ -1,20 +1,44 @@
 package com.ismip12.pscf.planemonitor.ui.components
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ismip12.pscf.planemonitor.data_model.Components
+import com.ismip12.pscf.planemonitor.MainActivity
+import com.ismip12.pscf.planemonitor.controller.ComponentsController
+import com.ismip12.pscf.planemonitor.data_model.front.Components
 
 class ComponentsViewModel : ViewModel() {
 
-    private var compModel = Components(false, booleanArrayOf(true, false, true, false), true, floatArrayOf(100F, 200F, 300F))
+    private var compContr = ComponentsController();
+    private var compModel = Components()
+
+    init{
+        compContr.getData()
+        compContr.subscribeNewStates().subscribe({state->
+            compModel= Components(state)
+            _flDoor.postValue(if (compModel.DOR[0]) "Otwarte" else "Zamkniete" )
+            _frDoor.postValue(if (compModel.DOR[1]) "Otwarte" else "Zamkniete" )
+            _rlDoor.postValue(if (compModel.DOR[2]) "Otwarte" else "Zamkniete" )
+            _rrDoor.postValue(if (compModel.DOR[3]) "Otwarte" else "Zamkniete" )
+            _gears.postValue(if (compModel.LGP) "Opuszczone" else  "Zablokowane")
+            _redHydro.postValue(compModel.ECAM_HYD[0].toString() + " PSI")
+            _blueHydro.postValue(compModel.ECAM_HYD[1].toString() + " PSI")
+            _yellowHydro.postValue(compModel.ECAM_HYD[2].toString() + " PSI")
+        },
+            {error->
+                Log.println(Log.ERROR, "BLAD", error.message!!)
+            })
+    }
 
     private val _flDoor = MutableLiveData<String>().apply {
+        println(compModel.toString())
         if (compModel.DOR[0]) {
             value = "Otwarte"
         } else {
             value = "Zamknięte"
         }
+
     }
 
     private val _frDoor = MutableLiveData<String>().apply {
@@ -70,6 +94,8 @@ class ComponentsViewModel : ViewModel() {
     var blueHydro: LiveData<String> = _blueHydro
     var yellowHydro: LiveData<String> = _yellowHydro
 
-
+    /*fun update(){
+        _flDoor.p
+    }*/
 
 }
