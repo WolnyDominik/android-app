@@ -4,17 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ismip12.pscf.planemonitor.MainActivity
 import com.ismip12.pscf.planemonitor.controller.ComponentsController
 import com.ismip12.pscf.planemonitor.data_model.front.Components
-import com.ismip12.pscf.planemonitor.data_model.mech_parts.params.Alarm
+import com.ismip12.pscf.planemonitor.data_model.mech_parts.Alert
+import com.ismip12.pscf.planemonitor.data_model.mech_parts.params.AlertCode
+import com.ismip12.pscf.planemonitor.data_model.mech_parts.params.AlertLevel
 
 class ComponentsViewModel : ViewModel() {
 
     private var compContr = ComponentsController();
     private var compModel = Components()
 
-    init{
+     init{
+
         compContr.getData()
         compContr.subscribeNewStates().subscribe({state->
             compModel= Components(state)
@@ -26,18 +28,28 @@ class ComponentsViewModel : ViewModel() {
             _redHydro.postValue(compModel.ECAM_HYD[0].toString() + " PSI")
             _blueHydro.postValue(compModel.ECAM_HYD[1].toString() + " PSI")
             _yellowHydro.postValue(compModel.ECAM_HYD[2].toString() + " PSI")
+            _noConnection.postValue(false)
+        },
+            {error->
+                Log.println(Log.ERROR, "BLAD", error.message!!)
+                _noConnection.postValue(true)
+            })
+
+        compContr.subscribeNewAlarms().subscribe({alarm->
+           _alertDoor.postValue(alarm)
+
         },
             {error->
                 Log.println(Log.ERROR, "BLAD", error.message!!)
             })
 
-       /* compContr.subscribeNewAlarms().subscribe({alarm->
-
-            _alNe.postValue(alarm.get(0).code.toString())
-        },
-            {error->
-                Log.println(Log.ERROR, "BLAD", error.message!!)
-            })*/
+         compContr.subscribeNewErrors().subscribe({error->
+             if(error==true){
+                 _noConnection.postValue(true)
+             }else{
+                 _noConnection.postValue(false)
+             }
+         })
     }
 
     private val _flDoor = MutableLiveData<String>().apply {
@@ -93,9 +105,12 @@ class ComponentsViewModel : ViewModel() {
     private val _yellowHydro = MutableLiveData<String>().apply {
         value = compModel.ECAM_HYD[1].toString() + " PSI"
     }
-  /*  private val _alNe = MutableLiveData<String>().apply {
-        value = "off"
-    }*/
+    private val _alertDoor = MutableLiveData<List<Alert>>().apply {
+        value = emptyList()
+    }
+    private val _noConnection = MutableLiveData<Boolean>().apply {
+        value = false
+    }
 
     var flDoor: LiveData<String> = _flDoor
     var frDoor: LiveData<String> = _frDoor
@@ -105,7 +120,8 @@ class ComponentsViewModel : ViewModel() {
     var redHydro: LiveData<String> = _redHydro
     var blueHydro: LiveData<String> = _blueHydro
     var yellowHydro: LiveData<String> = _yellowHydro
-   /* var alNe: LiveData<String> = _alNe*/
+    var alertDoor: LiveData<List<Alert>> = _alertDoor
+    var noConnection: LiveData<Boolean> = _noConnection
     /*fun update(){
         _flDoor.p
     }*/
