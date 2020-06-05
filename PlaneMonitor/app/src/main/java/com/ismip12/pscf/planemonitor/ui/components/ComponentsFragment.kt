@@ -121,7 +121,7 @@ class ComponentsFragment : Fragment() {
                         yellowHydro.tooltipText =
                             "Ciśnienie w układzie hydraulicznym jest za wysokie"
                     }
-                } else if (al.code.equals(AlertCode.ECAM_HYD_HIGH.text)) { //low pressure
+                } else if (al.code.equals(AlertCode.ECAM_HYD_LOW.text)) { //low pressure
                     if (al.sensorId == 0) { //red
                         redHydro.setTextColor(orange)
                         redHydro.tooltipText = "Ciśnienie w układzie hydraulicznym jest za niskie"
@@ -170,7 +170,7 @@ class ComponentsFragment : Fragment() {
                         yellowHydro.tooltipText =
                             "Ciśnienie w układzie hydraulicznym jest za wysokie"
                     }
-                } else if (al.code.equals(AlertCode.ECAM_HYD_HIGH.text)) { //low pressure
+                } else if (al.code.equals(AlertCode.ECAM_HYD_LOW.text)) { //low pressure
                     if (al.sensorId == 0) { //red
                         redHydro.setTextColor(red)
                         redHydro.tooltipText =

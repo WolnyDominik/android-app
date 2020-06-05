@@ -31,7 +31,7 @@ class ComponentsController {
 
         val stomp = StompClient(client, intervalMillis)
 
-        stomp.url = "http://192.168.1.113:8080/stomp-ws"
+        stomp.url = "http://192.168.0.80:8080/stomp-ws"
 
         stompConnection = stomp.connect().subscribe(
 
